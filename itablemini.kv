@@ -1,0 +1,70 @@
+
+<Setting>:
+    BoxLayout:
+        orientation: 'vertical'
+        GridLayout:
+            cols:2
+            size_hint_y:0.8
+            Label:
+                text:'IP SMTP'
+            TextInput:
+                text:'192.168.64.5'
+            Label:
+                text:'SMTP Port'
+            TextInput:
+                text:'25'
+        GridLayout:
+            size_hint_y:0.2
+            cols:4
+            Widget:
+            Button:
+                text: 'Назад'
+                on_press:root.manager.current='Main'
+            Button:
+                text: 'Сохранить'
+                on_press:root.manager.current='Main'
+            Widget:
+
+
+<Access>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint_y:.8
+            text: u'Логин: u012\n\nПароль: 1fbf'
+        Button:
+            size_hint_y:.2
+            text: 'Назад'
+            on_press:root.manager.current='Main'
+
+<MainMenu>
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            size_hint_y:.1
+            text: 'Настройки'
+            on_press:root.manager.current='Setting'
+        Label:
+            text:u'Доступных паролей: 20'
+            font_size: self.height/20
+
+        Button:
+            text:'Получить пароль'
+            size_hint_y:.2
+            on_press:root.manager.current='Access'
+
+
+<MiniManager>:
+    id: screen_manager
+    MainMenu:
+        id: main
+        name: 'Main'
+        manager: screen_manager
+    Setting:
+        id:setting
+        name: 'Setting'
+        manager: screen_manager
+    Access:
+        id:access
+        name: 'Access'
+        manager: screen_manager
